@@ -1,5 +1,14 @@
 //© Zero - Código libre no comercial
 
+
+// =========================================================
+// VARIABLES DE MÚSICA
+// =========================================================
+
+let musicaInicializada = false;
+let listenerMusicaRegistrado = false;
+
+
 // =========================================================
 // CARGAR EL SVG Y ANIMAR LOS CORAZONES
 // =========================================================
@@ -8,29 +17,45 @@ fetch('Img/treelove.svg')
   .then(res => res.text())
   .then(svgText => {
 
-    const container = document.getElementById('tree-container');
+    const container =
+      document.getElementById('tree-container');
 
     container.innerHTML = svgText;
 
-    const svg = container.querySelector('svg');
+    const svg =
+      container.querySelector('svg');
 
     if (!svg) return;
 
-    const allPaths = Array.from(svg.querySelectorAll('path'));
+
+    const allPaths =
+      Array.from(svg.querySelectorAll('path'));
+
 
     allPaths.forEach(path => {
 
       path.style.stroke = '#222';
+
       path.style.strokeWidth = '2.5';
+
       path.style.fillOpacity = '0';
 
-      const length = path.getTotalLength();
 
-      path.style.strokeDasharray = length;
-      path.style.strokeDashoffset = length;
-      path.style.transition = 'none';
+      const length =
+        path.getTotalLength();
+
+
+      path.style.strokeDasharray =
+        length;
+
+      path.style.strokeDashoffset =
+        length;
+
+      path.style.transition =
+        'none';
 
     });
+
 
     setTimeout(() => {
 
@@ -40,32 +65,48 @@ fetch('Img/treelove.svg')
           `stroke-dashoffset 1.2s cubic-bezier(.77,0,.18,1) ${i * 0.08}s, ` +
           `fill-opacity 0.5s ${0.9 + i * 0.08}s`;
 
-        path.style.strokeDashoffset = 0;
+
+        path.style.strokeDashoffset =
+          0;
+
 
         setTimeout(() => {
 
-          path.style.fillOpacity = '1';
-          path.style.stroke = '';
-          path.style.strokeWidth = '';
+          path.style.fillOpacity =
+            '1';
+
+          path.style.stroke =
+            '';
+
+          path.style.strokeWidth =
+            '';
 
         }, 1200 + i * 80);
 
       });
+
 
       const totalDuration =
         1200 +
         (allPaths.length - 1) * 80 +
         500;
 
+
       setTimeout(() => {
 
-        svg.classList.add('move-and-scale');
+        svg.classList.add(
+          'move-and-scale'
+        );
+
 
         setTimeout(() => {
 
           showDedicationText();
+
           startFloatingObjects();
+
           showCountdown();
+
           playBackgroundMusic();
 
         }, 1200);
@@ -74,24 +115,30 @@ fetch('Img/treelove.svg')
 
     }, 50);
 
+
     // =====================================================
     // CORAZONES ANIMADOS
     // =====================================================
 
-    const heartPaths = allPaths.filter(el => {
+    const heartPaths =
+      allPaths.filter(el => {
 
-      const style = el.getAttribute('style') || '';
+        const style =
+          el.getAttribute('style') || '';
 
-      return (
-        style.includes('#FC6F58') ||
-        style.includes('#C1321F')
-      );
+        return (
+          style.includes('#FC6F58') ||
+          style.includes('#C1321F')
+        );
 
-    });
+      });
+
 
     heartPaths.forEach(path => {
 
-      path.classList.add('animated-heart');
+      path.classList.add(
+        'animated-heart'
+      );
 
     });
 
@@ -104,7 +151,8 @@ fetch('Img/treelove.svg')
 
 function getURLParam(name) {
 
-  const url = new URL(window.location.href);
+  const url =
+    new URL(window.location.href);
 
   return url.searchParams.get(name);
 
@@ -112,41 +160,82 @@ function getURLParam(name) {
 
 
 // =========================================================
-// MÚSICA
+// ACTUALIZAR BOTÓN DE MÚSICA
 // =========================================================
 
-let musicaInicializada = false;
-let listenerMusicaRegistrado = false;
+function actualizarBotonMusica(sonando) {
+
+  const btn =
+    document.getElementById('music-btn');
+
+  if (!btn) return;
+
+
+  if (sonando) {
+
+    btn.textContent =
+      '🔊 Música';
+
+  } else {
+
+    btn.textContent =
+      '▶️ Música';
+
+  }
+
+}
 
 
 // =========================================================
-// INTENTAR REPRODUCIR LA MÚSICA
+// INTENTAR REPRODUCIR MÚSICA
 // =========================================================
 
 function intentarReproducirMusica() {
 
-  const audio = document.getElementById('bg-music');
+  const audio =
+    document.getElementById('bg-music');
 
   if (!audio) return;
 
-  if (musicaInicializada && !audio.paused) {
+
+  // Si ya está reproduciéndose,
+  // no hacemos nada.
+
+  if (
+    musicaInicializada &&
+    !audio.paused
+  ) {
+
     return;
+
   }
+
 
   audio.play()
     .then(() => {
 
-      musicaInicializada = true;
+      musicaInicializada =
+        true;
 
-      actualizarBotonMusica(true);
+
+      actualizarBotonMusica(
+        true
+      );
+
+
+      // El navegador permitió
+      // la reproducción.
 
       eliminarListenersMusica();
 
     })
     .catch(() => {
 
-      // Safari/iPhone puede bloquear autoplay.
-      // Esperamos cualquier interacción del usuario.
+      // Safari/iPhone puede bloquear
+      // el autoplay.
+
+      // Esperamos cualquier interacción
+      // fuera del botón.
 
       registrarListenersMusica();
 
@@ -156,14 +245,19 @@ function intentarReproducirMusica() {
 
 
 // =========================================================
-// REGISTRAR CUALQUIER INTERACCIÓN
+// REGISTRAR INTERACCIONES
 // =========================================================
 
 function registrarListenersMusica() {
 
-  if (listenerMusicaRegistrado) return;
+  if (listenerMusicaRegistrado) {
+    return;
+  }
 
-  listenerMusicaRegistrado = true;
+
+  listenerMusicaRegistrado =
+    true;
+
 
   const eventos = [
     'click',
@@ -172,6 +266,7 @@ function registrarListenersMusica() {
     'pointerdown',
     'keydown'
   ];
+
 
   eventos.forEach(evento => {
 
@@ -189,22 +284,52 @@ function registrarListenersMusica() {
 
 
 // =========================================================
-// ACTIVAR MÚSICA CUANDO EL USUARIO INTERACTÚA
+// ACTIVAR MÚSICA CON CUALQUIER INTERACCIÓN
 // =========================================================
 
-function activarMusicaPorInteraccion() {
+function activarMusicaPorInteraccion(event) {
 
-  const audio = document.getElementById('bg-music');
+  // =======================================================
+  // IMPORTANTE
+  //
+  // Si la interacción ocurrió sobre el botón,
+  // NO hacemos autoplay.
+  //
+  // Esto evita que al pulsar "Música"
+  // la canción se vuelva a activar inmediatamente.
+  // =======================================================
+
+  if (
+    event &&
+    event.target &&
+    event.target.closest &&
+    event.target.closest('#music-btn')
+  ) {
+
+    return;
+
+  }
+
+
+  const audio =
+    document.getElementById('bg-music');
 
   if (!audio) return;
 
-  // Si ya está sonando, no hacemos nada.
+
+  // Si ya está sonando,
+  // no hacemos nada.
 
   if (!audio.paused) {
 
-    musicaInicializada = true;
+    musicaInicializada =
+      true;
 
-    actualizarBotonMusica(true);
+
+    actualizarBotonMusica(
+      true
+    );
+
 
     eliminarListenersMusica();
 
@@ -212,19 +337,29 @@ function activarMusicaPorInteraccion() {
 
   }
 
+
+  // Intentamos reproducir
+  // aprovechando la interacción
+  // real del usuario.
+
   audio.play()
     .then(() => {
 
-      musicaInicializada = true;
+      musicaInicializada =
+        true;
 
-      actualizarBotonMusica(true);
+
+      actualizarBotonMusica(
+        true
+      );
+
 
       eliminarListenersMusica();
 
     })
     .catch(() => {
 
-      // Si el navegador todavía lo bloquea,
+      // Si todavía fue bloqueado,
       // dejamos los listeners activos.
 
     });
@@ -233,12 +368,15 @@ function activarMusicaPorInteraccion() {
 
 
 // =========================================================
-// ELIMINAR LISTENERS DESPUÉS DE ACTIVAR LA MÚSICA
+// ELIMINAR LISTENERS
 // =========================================================
 
 function eliminarListenersMusica() {
 
-  if (!listenerMusicaRegistrado) return;
+  if (!listenerMusicaRegistrado) {
+    return;
+  }
+
 
   const eventos = [
     'click',
@@ -247,6 +385,7 @@ function eliminarListenersMusica() {
     'pointerdown',
     'keydown'
   ];
+
 
   eventos.forEach(evento => {
 
@@ -257,30 +396,9 @@ function eliminarListenersMusica() {
 
   });
 
-  listenerMusicaRegistrado = false;
 
-}
-
-
-// =========================================================
-// ACTUALIZAR BOTÓN DE MÚSICA
-// =========================================================
-
-function actualizarBotonMusica(sonando) {
-
-  const btn = document.getElementById('music-btn');
-
-  if (!btn) return;
-
-  if (sonando) {
-
-    btn.textContent = '🔊 Música';
-
-  } else {
-
-    btn.textContent = '▶️ Música';
-
-  }
+  listenerMusicaRegistrado =
+    false;
 
 }
 
@@ -291,7 +409,9 @@ function actualizarBotonMusica(sonando) {
 
 function showDedicationText() {
 
-  let text = getURLParam('text');
+  let text =
+    getURLParam('text');
+
 
   if (!text) {
 
@@ -299,7 +419,7 @@ function showDedicationText() {
 
 Por que cuando te miro a los ojos y me devuelves la mirada, el mundo entero se siente un poco anormal, porque me haces sentir más fuerte y más débil al mismo tiempo.
 
-Y por todo eso no quiero ser el pan integral de tu desayuno, ese que eliges solo porque es bueno para ti; quiero ser esa dona de chocolate que te tienta, la que te encanta y disfrutas sin pensar.\n\n
+Y por todo eso no quiero ser el pan integral de tu desayuno, ese que eliges solo porque es bueno para ti; quiero ser esa dona de chocolate que te tienta, la que te encanta y disfrutas sin pensar.\n
 
 Avy jorāelan mirre jēdari — te amo más de lo que las palabras alcanzan a decir.`;
 
@@ -311,12 +431,20 @@ Avy jorāelan mirre jēdari — te amo más de lo que las palabras alcanzan a de
 
   }
 
-  const container =
-    document.getElementById('dedication-text');
 
-  container.classList.add('typing');
+  const container =
+    document.getElementById(
+      'dedication-text'
+    );
+
+
+  container.classList.add(
+    'typing'
+  );
+
 
   let i = 0;
+
 
   function type() {
 
@@ -326,6 +454,7 @@ Avy jorāelan mirre jēdari — te amo más de lo que las palabras alcanzan a de
         text.slice(0, i);
 
       i++;
+
 
       setTimeout(
         type,
@@ -345,6 +474,7 @@ Avy jorāelan mirre jēdari — te amo más de lo que las palabras alcanzan a de
 
   }
 
+
   type();
 
 }
@@ -357,33 +487,53 @@ Avy jorāelan mirre jēdari — te amo más de lo que las palabras alcanzan a de
 function showSignature() {
 
   const dedication =
-    document.getElementById('dedication-text');
+    document.getElementById(
+      'dedication-text'
+    );
+
 
   let signature =
-    dedication.querySelector('#signature');
+    dedication.querySelector(
+      '#signature'
+    );
+
 
   if (!signature) {
 
     signature =
-      document.createElement('div');
+      document.createElement(
+        'div'
+      );
 
-    signature.id = 'signature';
 
-    signature.className = 'signature';
+    signature.id =
+      'signature';
 
-    dedication.appendChild(signature);
+
+    signature.className =
+      'signature';
+
+
+    dedication.appendChild(
+      signature
+    );
 
   }
+
 
   let firma =
     getURLParam('firma');
 
+
   signature.textContent =
     firma
       ? decodeURIComponent(firma)
-      : "Con amor, Ares";
+      : 'Con amor, Ares';
 
-  signature.classList.add('visible');
+
+  signature.classList.add(
+    'visible'
+  );
 
 }
 
@@ -395,77 +545,104 @@ function showSignature() {
 function startFloatingObjects() {
 
   const container =
-    document.getElementById('floating-objects');
+    document.getElementById(
+      'floating-objects'
+    );
+
 
   let count = 0;
+
 
   function spawn() {
 
     let el =
-      document.createElement('div');
+      document.createElement(
+        'div'
+      );
+
 
     el.className =
       'floating-petal';
 
+
     el.style.left =
       `${Math.random() * 90 + 2}%`;
+
 
     el.style.top =
       `${100 + Math.random() * 10}%`;
 
-    el.style.opacity =
-      0.7 + Math.random() * 0.3;
 
-    container.appendChild(el);
+    el.style.opacity =
+      0.7 +
+      Math.random() * 0.3;
+
+
+    container.appendChild(
+      el
+    );
+
 
     const duration =
       6000 +
       Math.random() * 4000;
 
+
     const drift =
       (Math.random() - 0.5) * 60;
+
 
     setTimeout(() => {
 
       el.style.transition =
         `transform ${duration}ms linear, opacity 1.2s`;
 
+
       el.style.transform =
         `translate(${drift}px, -110vh) ` +
         `scale(${0.8 + Math.random() * 0.6}) ` +
         `rotate(${Math.random() * 360}deg)`;
 
-      el.style.opacity = 0.2;
+
+      el.style.opacity =
+        0.2;
 
     }, 30);
+
 
     setTimeout(() => {
 
       if (el.parentNode) {
 
-        el.parentNode.removeChild(el);
+        el.parentNode.removeChild(
+          el
+        );
 
       }
 
     }, duration + 2000);
 
+
     if (count++ < 32) {
 
       setTimeout(
         spawn,
-        350 + Math.random() * 500
+        350 +
+        Math.random() * 500
       );
 
     } else {
 
       setTimeout(
         spawn,
-        1200 + Math.random() * 1200
+        1200 +
+        Math.random() * 1200
       );
 
     }
 
   }
+
 
   spawn();
 
@@ -479,31 +656,50 @@ function startFloatingObjects() {
 function showCountdown() {
 
   const container =
-    document.getElementById('countdown');
+    document.getElementById(
+      'countdown'
+    );
+
 
   let startParam =
     getURLParam('start');
 
+
   let eventParam =
     getURLParam('event');
 
+
   let startDate =
     startParam
-      ? new Date(startParam + 'T00:00:00')
-      : new Date('2026-08-15T00:00:00');
+      ? new Date(
+          startParam +
+          'T00:00:00'
+        )
+      : new Date(
+          '2026-08-15T00:00:00'
+        );
+
 
   let eventDate =
     eventParam
-      ? new Date(eventParam + 'T00:00:00')
-      : new Date('2027-08-15T00:00:00');
+      ? new Date(
+          eventParam +
+          'T00:00:00'
+        )
+      : new Date(
+          '2027-08-15T00:00:00'
+        );
 
 
   function update() {
 
-    const now = new Date();
+    const now =
+      new Date();
+
 
     let diff =
       now - startDate;
+
 
     let days =
       Math.floor(
@@ -511,8 +707,10 @@ function showCountdown() {
         (1000 * 60 * 60 * 24)
       );
 
+
     let eventDiff =
       eventDate - now;
+
 
     let eventDays =
       Math.max(
@@ -522,6 +720,7 @@ function showCountdown() {
           (1000 * 60 * 60 * 24)
         )
       );
+
 
     let eventHours =
       Math.max(
@@ -533,6 +732,7 @@ function showCountdown() {
         )
       );
 
+
     let eventMinutes =
       Math.max(
         0,
@@ -543,23 +743,31 @@ function showCountdown() {
         )
       );
 
+
     let eventSeconds =
       Math.max(
         0,
         Math.floor(
-          (eventDiff / 1000) % 60
+          (eventDiff / 1000) %
+            60
         )
       );
+
 
     container.innerHTML =
       `Llevamos juntos: <b>${days}</b> días<br>` +
       `Nuestro aniversario: <b>${eventDays}d ${eventHours}h ${eventMinutes}m ${eventSeconds}s</b>`;
 
-    container.classList.add('visible');
+
+    container.classList.add(
+      'visible'
+    );
 
   }
 
+
   update();
+
 
   setInterval(
     update,
@@ -576,26 +784,37 @@ function showCountdown() {
 function playBackgroundMusic() {
 
   const audio =
-    document.getElementById('bg-music');
+    document.getElementById(
+      'bg-music'
+    );
+
 
   if (!audio) return;
 
 
   // =======================================================
-  // MÚSICA DESDE URL
+  // MÚSICA DESDE LA URL
   // =======================================================
 
   let musicaParam =
     getURLParam('musica');
 
+
   if (musicaParam) {
 
     musicaParam =
-      decodeURIComponent(musicaParam)
-        .replace(/[^\w\d .\-]/g, '');
+      decodeURIComponent(
+        musicaParam
+      )
+      .replace(
+        /[^\w\d .\-]/g,
+        ''
+      );
+
 
     audio.src =
-      'Music/' + musicaParam;
+      'Music/' +
+      musicaParam;
 
   }
 
@@ -607,48 +826,66 @@ function playBackgroundMusic() {
   let youtubeParam =
     getURLParam('youtube');
 
+
   if (youtubeParam) {
 
     let helpMsg =
-      document.getElementById('yt-help-msg');
+      document.getElementById(
+        'yt-help-msg'
+      );
+
 
     if (!helpMsg) {
 
       helpMsg =
-        document.createElement('div');
+        document.createElement(
+          'div'
+        );
+
 
       helpMsg.id =
         'yt-help-msg';
 
+
       helpMsg.style.position =
         'fixed';
+
 
       helpMsg.style.right =
         '18px';
 
+
       helpMsg.style.bottom =
         '180px';
+
 
       helpMsg.style.background =
         'rgba(255,255,255,0.95)';
 
+
       helpMsg.style.color =
         '#e60026';
+
 
       helpMsg.style.padding =
         '10px 16px';
 
+
       helpMsg.style.borderRadius =
         '12px';
+
 
       helpMsg.style.boxShadow =
         '0 2px 8px #e6002633';
 
+
       helpMsg.style.fontSize =
         '1.05em';
 
+
       helpMsg.style.zIndex =
         100;
+
 
       helpMsg.innerHTML =
         'Para usar música de YouTube, descarga el audio ' +
@@ -656,7 +893,11 @@ function playBackgroundMusic() {
         'colócalo en la carpeta <b>Music</b> y usa la URL así:<br><br>' +
         '<code>?musica=nombre.mp3</code>';
 
-      document.body.appendChild(helpMsg);
+
+      document.body.appendChild(
+        helpMsg
+      );
+
 
       setTimeout(() => {
 
@@ -674,54 +915,74 @@ function playBackgroundMusic() {
 
 
   // =======================================================
-  // CREAR BOTÓN DE MÚSICA
+  // CREAR BOTÓN
   // =======================================================
 
   let btn =
-    document.getElementById('music-btn');
+    document.getElementById(
+      'music-btn'
+    );
+
 
   if (!btn) {
 
     btn =
-      document.createElement('button');
+      document.createElement(
+        'button'
+      );
+
 
     btn.id =
       'music-btn';
 
+
     btn.textContent =
       '🔊 Música';
+
 
     btn.style.position =
       'fixed';
 
+
     btn.style.bottom =
       '18px';
+
 
     btn.style.right =
       '18px';
 
+
     btn.style.zIndex =
       99;
+
 
     btn.style.background =
       'rgba(255,255,255,0.85)';
 
+
     btn.style.border =
       'none';
+
 
     btn.style.borderRadius =
       '24px';
 
+
     btn.style.padding =
       '10px 18px';
+
 
     btn.style.fontSize =
       '1.1em';
 
+
     btn.style.cursor =
       'pointer';
 
-    document.body.appendChild(btn);
+
+    document.body.appendChild(
+      btn
+    );
 
   }
 
@@ -730,32 +991,50 @@ function playBackgroundMusic() {
   // CONFIGURACIÓN DEL AUDIO
   // =======================================================
 
-  audio.volume = 0.7;
-  audio.loop = true;
+  audio.volume =
+    0.7;
+
+
+  audio.loop =
+    true;
 
 
   // =======================================================
-  // INTENTO DE AUTOPLAY
+  // INTENTAR AUTOPLAY
   // =======================================================
 
   intentarReproducirMusica();
 
 
   // =======================================================
-  // BOTÓN MANUAL
+  // BOTÓN DE MÚSICA
   // =======================================================
 
-  btn.onclick = () => {
+  btn.onclick = (event) => {
+
+    // Evita que el clic del botón
+    // sea tratado como interacción
+    // para autoplay.
+
+    event.stopPropagation();
+
 
     if (audio.paused) {
+
+      // ===============================================
+      // REPRODUCIR
+      // ===============================================
 
       audio.play()
         .then(() => {
 
-          musicaInicializada = true;
+          musicaInicializada =
+            true;
+
 
           btn.textContent =
             '🔊 Música';
+
 
           eliminarListenersMusica();
 
@@ -767,17 +1046,27 @@ function playBackgroundMusic() {
 
         });
 
+
     } else {
+
+      // ===============================================
+      // PAUSAR
+      // ===============================================
 
       audio.pause();
 
-      musicaInicializada = false;
+
+      musicaInicializada =
+        false;
+
 
       btn.textContent =
         '🔈 Música';
 
-      // Permitimos que una interacción posterior
-      // pueda volver a reproducirla.
+
+      // Después de pausar,
+      // una interacción FUERA del botón
+      // podrá volver a activar la música.
 
       registrarListenersMusica();
 
@@ -789,7 +1078,7 @@ function playBackgroundMusic() {
 
 
 // =========================================================
-// INICIAR MÚSICA AL CARGAR LA PÁGINA
+// INICIAR AL CARGAR LA PÁGINA
 // =========================================================
 
 window.addEventListener(
