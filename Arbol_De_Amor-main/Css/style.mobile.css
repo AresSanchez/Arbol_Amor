@@ -1,3 +1,4 @@
+```css
 /*© Zero - Código libre no comercial*/
 
 body {
@@ -26,7 +27,8 @@ body {
 
 .tree-container svg.move-and-scale {
   transition: transform 1.2s cubic-bezier(.77,0,.18,1);
-  /* Mueve hacia abajo en caso de los celualares */
+
+  /* Mueve hacia abajo en caso de los celulares */
   transform: translateY(60px) scale(1.18);
 }
 
@@ -64,6 +66,7 @@ body {
 }
 
 @media (max-width: 700px) {
+
   .signature {
     position: static;
     display: block;
@@ -74,6 +77,7 @@ body {
     font-size: 1.25rem;
     text-align: center;
   }
+
 }
 
 .countdown {
@@ -92,7 +96,9 @@ body {
   z-index: 6;
   pointer-events: none;
   letter-spacing: 0.05em;
-  transition: opacity 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
+  transition:
+    opacity 0.8s cubic-bezier(.77,0,.18,1),
+    transform 0.8s cubic-bezier(.77,0,.18,1);
   opacity: 0;
   transform: translateX(-50%) translateY(30px);
 }
@@ -103,10 +109,12 @@ body {
 }
 
 /* Ajusta los pétalos flotantes */
+
 .floating-petal {
   width: 13px;
   height: 18px;
 }
+
 
 /* =========================================================
    FOTOS A LA DERECHA DEL ÁRBOL - VERSIÓN MÓVIL
@@ -136,7 +144,7 @@ body {
 
 
 /* =========================================================
-   ANIMACIÓN DE APARICIÓN DE LAS FOTOS
+   MARCO DE LAS FOTOS + DESVANECIMIENTO
 ========================================================= */
 
 .side-photo {
@@ -162,40 +170,184 @@ body {
     0 3px 7px rgba(0, 0, 0, 0.12),
     0 8px 16px rgba(0, 0, 0, 0.10);
 
-  /* IMPORTANTE */
+  /* Las fotos empiezan invisibles */
   opacity: 0;
 
+  /* Empiezan un poco abajo y pequeñas */
   transform:
-    translateY(12px)
-    scale(.95);
+    translateY(14px)
+    scale(0.95);
 
+  /*
+     Desvanecimiento suave.
+     JS solamente agrega .photos-visible.
+  */
   transition:
     opacity 1.2s ease,
-    transform 1.2s ease;
+    transform 1.2s cubic-bezier(.22,.61,.36,1);
 }
 
 
-/* Cuando JS activa las fotos */
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.side-photo img {
+  display: block;
+
+  width: 100%;
+
+  height: 68px;
+
+  object-fit: cover;
+
+  border-radius: 2px;
+}
+
+
+/* =========================================================
+   CHINCHETA
+========================================================= */
+
+.side-photo::before {
+  content: "";
+
+  position: absolute;
+
+  width: 9px;
+  height: 9px;
+
+  top: -5px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #ff9b9b,
+      #e60026 60%,
+      #9e001b
+    );
+
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, .25);
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   POSICIÓN INICIAL DE CADA FOTO
+========================================================= */
+
+.photo-1 {
+  transform:
+    translateY(14px)
+    scale(0.95)
+    rotate(-5deg);
+}
+
+.photo-2 {
+  transform:
+    translateY(14px)
+    scale(0.95)
+    rotate(4deg);
+}
+
+.photo-3 {
+  transform:
+    translateY(14px)
+    scale(0.95)
+    rotate(-3deg);
+}
+
+
+/* =========================================================
+   APARICIÓN DE LAS FOTOS
+========================================================= */
 
 .side-photos.photos-visible .side-photo {
   opacity: 1;
-
-  transform:
-    translateY(0)
-    scale(1);
 }
 
 
-/* Cada foto aparece un poquito después */
+/* Foto 1 */
 
 .side-photos.photos-visible .photo-1 {
+  transform:
+    translateY(0)
+    scale(1)
+    rotate(-5deg);
+
   transition-delay: 0s;
 }
 
+
+/* Foto 2 */
+
 .side-photos.photos-visible .photo-2 {
-  transition-delay: .35s;
+  transform:
+    translateY(0)
+    scale(1)
+    rotate(4deg);
+
+  transition-delay: 0.35s;
 }
 
+
+/* Foto 3 */
+
 .side-photos.photos-visible .photo-3 {
-  transition-delay: .70s;
+  transform:
+    translateY(0)
+    scale(1)
+    rotate(-3deg);
+
+  transition-delay: 0.70s;
 }
+
+
+/* =========================================================
+   PANTALLAS MUY PEQUEÑAS
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .side-photos {
+
+    right: 5px;
+
+    width: 75px;
+
+    gap: 10px;
+  }
+
+  .side-photo {
+
+    width: 65px;
+
+    padding:
+      3px
+      3px
+      15px
+      3px;
+  }
+
+  .side-photo img {
+
+    height: 57px;
+  }
+
+  .side-photo::before {
+
+    width: 8px;
+    height: 8px;
+
+    top: -4px;
+  }
+
+}
+```
