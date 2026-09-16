@@ -90,34 +90,6 @@
 
         }
 
-        /* =================================================
-           BOTÓN DE PRUEBA
-        ================================================= */
-
-        #test-mobile {
-
-            position: fixed;
-
-            top: 10px;
-            left: 10px;
-
-            z-index: 99999;
-
-            padding:
-                10px 14px;
-
-            background: #000;
-
-            color: #fff;
-
-            border: none;
-
-            border-radius: 8px;
-
-            cursor: pointer;
-
-        }
-
     </style>
 
 </head>
@@ -125,14 +97,18 @@
 
 <body>
 
-    <!-- PÉTALOS -->
+    <!-- =================================================
+         PÉTALOS
+    ================================================== -->
 
     <div
         id="floating-objects"
     ></div>
 
 
-    <!-- TEXTO -->
+    <!-- =================================================
+         TEXTO DE DEDICATORIA
+    ================================================== -->
 
     <div
         class="dedication-text"
@@ -147,7 +123,9 @@
     </div>
 
 
-    <!-- CONTADOR -->
+    <!-- =================================================
+         CONTADOR
+    ================================================== -->
 
     <div
         class="countdown"
@@ -155,7 +133,9 @@
     ></div>
 
 
-    <!-- ÁRBOL -->
+    <!-- =================================================
+         ÁRBOL
+    ================================================== -->
 
     <div
         id="tree-container"
@@ -164,10 +144,12 @@
 
 
     <!-- =================================================
-         FOTOS A LA DERECHA
-    ================================================= -->
+         FOTOS A LA DERECHA DEL ÁRBOL
+    ================================================== -->
 
     <div class="side-photos">
+
+        <!-- TED Y TRACY -->
 
         <div class="side-photo photo-1">
 
@@ -179,6 +161,8 @@
         </div>
 
 
+        <!-- FOTO DE USTEDES 1 -->
+
         <div class="side-photo photo-2">
 
             <img
@@ -188,6 +172,8 @@
 
         </div>
 
+
+        <!-- FOTO DE USTEDES 2 -->
 
         <div class="side-photo photo-3">
 
@@ -200,9 +186,10 @@
 
     </div>
 
+
     <!-- =================================================
          MÚSICA
-    ================================================= -->
+    ================================================== -->
 
     <audio
         src="Music/Josean Log - Chachachá (Lyric Video).mp3"
@@ -212,35 +199,11 @@
 
 
     <!-- =================================================
-         SCRIPT DE PRUEBA
-    ================================================= -->
-
-    <script>
-
-        const testButton =
-            document.getElementById(
-                "test-mobile"
-            );
-
-        testButton.addEventListener(
-            "click",
-            function () {
-
-                document.body.classList.toggle(
-                    "mobile-test"
-                );
-
-            }
-        );
-
-    </script>
-
-
-    <!-- SCRIPT PRINCIPAL -->
+         SCRIPT PRINCIPAL
+    ================================================== -->
 
     <script src="Js/script.js"></script>
 
 </body>
 
 </html>
-
