@@ -1,4 +1,4 @@
-
+```css
 /*© Zero - Código libre no comercial*/
 
 body {
@@ -96,19 +96,30 @@ body {
   z-index: 6;
   pointer-events: none;
   letter-spacing: 0.05em;
+
   transition:
     opacity 0.8s cubic-bezier(.77,0,.18,1),
     transform 0.8s cubic-bezier(.77,0,.18,1);
+
   opacity: 0;
-  transform: translateX(-50%) translateY(30px);
+
+  transform:
+    translateX(-50%)
+    translateY(30px);
 }
 
 .countdown.visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+
+  transform:
+    translateX(-50%)
+    translateY(0);
 }
 
-/* Ajusta los pétalos flotantes */
+
+/* =========================================================
+   PÉTALOS
+========================================================= */
 
 .floating-petal {
   width: 13px;
@@ -117,14 +128,13 @@ body {
 
 
 /* =========================================================
-   FOTOS A LA DERECHA DEL ÁRBOL - VERSIÓN MÓVIL
+   FOTOS A LA DERECHA DEL ÁRBOL
 ========================================================= */
 
 .side-photos {
   position: fixed;
 
   top: 50%;
-
   right: 10px;
 
   transform: translateY(-50%);
@@ -144,7 +154,7 @@ body {
 
 
 /* =========================================================
-   MARCO DE LAS FOTOS + DESVANECIMIENTO
+   MARCOS DE LAS FOTOS
 ========================================================= */
 
 .side-photo {
@@ -170,33 +180,37 @@ body {
     0 3px 7px rgba(0, 0, 0, 0.12),
     0 8px 16px rgba(0, 0, 0, 0.10);
 
-  /* Las fotos empiezan invisibles */
+  /*
+     IMPORTANTE:
+     Las fotos comienzan completamente
+     transparentes.
+  */
   opacity: 0;
 
-  /* Empiezan un poco abajo y pequeñas */
+  /*
+     Pequeño desplazamiento inicial.
+  */
   transform:
-    translateY(14px)
-    scale(0.95);
+    translateY(12px)
+    scale(0.96);
 
   /*
      Desvanecimiento suave.
-     JS solamente agrega .photos-visible.
   */
   transition:
-    opacity 1.2s ease,
-    transform 1.2s cubic-bezier(.22,.61,.36,1);
+    opacity 1.8s ease,
+    transform 1.8s cubic-bezier(.22,.61,.36,1);
 }
 
 
 /* =========================================================
-   IMAGEN
+   IMÁGENES
 ========================================================= */
 
 .side-photo img {
   display: block;
 
   width: 100%;
-
   height: 68px;
 
   object-fit: cover;
@@ -220,7 +234,8 @@ body {
   top: -5px;
   left: 50%;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
   border-radius: 50%;
 
@@ -245,22 +260,22 @@ body {
 
 .photo-1 {
   transform:
-    translateY(14px)
-    scale(0.95)
+    translateY(12px)
+    scale(0.96)
     rotate(-5deg);
 }
 
 .photo-2 {
   transform:
-    translateY(14px)
-    scale(0.95)
+    translateY(12px)
+    scale(0.96)
     rotate(4deg);
 }
 
 .photo-3 {
   transform:
-    translateY(14px)
-    scale(0.95)
+    translateY(12px)
+    scale(0.96)
     rotate(-3deg);
 }
 
@@ -269,14 +284,15 @@ body {
    APARICIÓN DE LAS FOTOS
 ========================================================= */
 
-.side-photos.photos-visible .side-photo {
-  opacity: 1;
-}
-
-
-/* Foto 1 */
+/*
+   FOTO 1
+   Ted y Tracy
+*/
 
 .side-photos.photos-visible .photo-1 {
+
+  opacity: 1;
+
   transform:
     translateY(0)
     scale(1)
@@ -286,27 +302,37 @@ body {
 }
 
 
-/* Foto 2 */
+/*
+   FOTO 2
+*/
 
 .side-photos.photos-visible .photo-2 {
+
+  opacity: 1;
+
   transform:
     translateY(0)
     scale(1)
     rotate(4deg);
 
-  transition-delay: 0.35s;
+  transition-delay: 0.8s;
 }
 
 
-/* Foto 3 */
+/*
+   FOTO 3
+*/
 
 .side-photos.photos-visible .photo-3 {
+
+  opacity: 1;
+
   transform:
     translateY(0)
     scale(1)
     rotate(-3deg);
 
-  transition-delay: 0.70s;
+  transition-delay: 1.6s;
 }
 
 
@@ -350,3 +376,4 @@ body {
   }
 
 }
+```
