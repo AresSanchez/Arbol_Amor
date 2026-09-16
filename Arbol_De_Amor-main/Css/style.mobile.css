@@ -1,3 +1,4 @@
+
 /*© Zero - Código libre no comercial*/
 
 body {
@@ -11,14 +12,10 @@ body {
   max-height: 80vw;
   min-width: 180px;
   min-height: 180px;
-
   position: absolute;
-
   top: 48%;
   left: 50%;
-
   transform: translate(-50%, -50%);
-
   z-index: 2;
 }
 
@@ -29,49 +26,33 @@ body {
 }
 
 .tree-container svg.move-and-scale {
-  transition:
-    transform 1.2s cubic-bezier(.77,0,.18,1);
+  transition: transform 1.2s cubic-bezier(.77,0,.18,1);
 
-  /*
-     Mantiene el movimiento original
-     del árbol en móvil.
-  */
-  transform:
-    translateY(60px)
-    scale(1.18);
+  /* Mueve hacia abajo en caso de los celulares */
+  transform: translateY(60px) scale(1.18);
 }
 
 
 /* =========================================================
-   DEDICATORIA
+   TEXTO DE DEDICATORIA
 ========================================================= */
 
 .dedication-text {
-
   position: absolute;
 
   /*
-     Ya NO estará arriba del árbol.
-     La colocamos debajo de él.
+     En escritorio conserva la posición original.
   */
-  top: auto;
-
-  bottom: 15%;
+  top: 7vw;
 
   left: 50%;
 
   transform:
     translateX(-50%);
 
-  width: 88vw;
-
   max-width: 92vw;
 
-  min-width: 0;
-
-  font-size: .82rem;
-
-  line-height: 1.45;
+  font-size: 1.05rem;
 
   text-align: center;
 
@@ -84,42 +65,11 @@ body {
 
   white-space: pre-line;
 
-  z-index: 15;
+  z-index: 3;
 
   opacity: 0;
 
   pointer-events: none;
-
-  padding: 0;
-
-  background: transparent;
-
-  box-shadow: none;
-}
-
-
-/*
-   Se mantiene la animación original
-*/
-
-.dedication-text.typing {
-  opacity: 1;
-
-  animation:
-    fadeInText .6s;
-}
-
-
-@keyframes fadeInText {
-
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-
 }
 
 
@@ -128,37 +78,38 @@ body {
 ========================================================= */
 
 .signature {
-
   position: static;
 
   display: block;
 
   margin:
-    1em
+    2.2em
     auto
     0
     auto;
 
-  font-size: 1.15rem;
+  left: auto;
+
+  bottom: auto;
+
+  transform: none;
+
+  font-size: 1.25rem;
 
   color: #e60026;
 
   opacity: 0;
 
-  z-index: 16;
+  z-index: 5;
 
   white-space: pre;
 
   pointer-events: none;
 
   transition:
-    opacity .7s;
+    opacity 0.7s;
 
   text-align: center;
-}
-
-.signature.visible {
-  opacity: 1;
 }
 
 
@@ -167,28 +118,26 @@ body {
 ========================================================= */
 
 .countdown {
-
   position: fixed;
 
   left: 50%;
 
-  bottom: 3%;
+  bottom: 10vw;
 
   transform:
-    translateX(-50%)
-    translateY(30px);
+    translateX(-50%);
 
-  font-size: .68rem;
+  font-size: 0.98rem;
 
-  min-width: 72vw;
+  min-width: 60vw;
 
-  max-width: 88vw;
+  max-width: 92vw;
 
   text-align: center;
 
   padding:
-    .45em
-    .7em;
+    0.5em
+    0.7em;
 
   border-radius: 1em;
 
@@ -197,21 +146,24 @@ body {
   box-shadow:
     0 2px 8px #e6002611;
 
-  z-index: 20;
+  z-index: 6;
 
   pointer-events: none;
 
-  letter-spacing: .03em;
+  letter-spacing: 0.05em;
 
   transition:
-    opacity .8s cubic-bezier(.77,0,.18,1),
-    transform .8s cubic-bezier(.77,0,.18,1);
+    opacity 0.8s cubic-bezier(.77,0,.18,1),
+    transform 0.8s cubic-bezier(.77,0,.18,1);
 
   opacity: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(30px);
 }
 
 .countdown.visible {
-
   opacity: 1;
 
   transform:
@@ -225,28 +177,29 @@ body {
 ========================================================= */
 
 .floating-petal {
-
   width: 13px;
   height: 18px;
 }
 
 
 /* =========================================================
-   FOTOS A LA DERECHA
+   FOTOS A LA DERECHA DEL ÁRBOL
 ========================================================= */
 
 .side-photos {
-
   position: fixed;
 
   top: 50%;
 
-  right: 8px;
+  /*
+     Fotos a la derecha.
+  */
+  right: 10px;
 
   transform:
     translateY(-50%);
 
-  width: 88px;
+  width: 90px;
 
   display: flex;
 
@@ -256,21 +209,20 @@ body {
 
   gap: 14px;
 
-  z-index: 12;
+  z-index: 4;
 
   pointer-events: none;
 }
 
 
 /* =========================================================
-   MARCOS
+   MARCOS DE LAS FOTOS
 ========================================================= */
 
 .side-photo {
-
   position: relative;
 
-  width: 76px;
+  width: 78px;
 
   padding:
     4px
@@ -278,44 +230,36 @@ body {
     17px
     4px;
 
-  background:
-    #fffdf9;
+  background: #fffdf9;
 
   border-radius: 3px;
 
   border:
     1px solid
-    rgba(120,60,60,.10);
+    rgba(120, 60, 60, 0.10);
 
   box-shadow:
-    0 3px 7px rgba(0,0,0,.12),
-    0 8px 16px rgba(0,0,0,.10);
-
+    0 3px 7px rgba(0, 0, 0, 0.12),
+    0 8px 16px rgba(0, 0, 0, 0.10);
 
   /*
-     EMPIEZAN INVISIBLES
+     Las fotos empiezan invisibles.
   */
-
   opacity: 0;
 
-
   /*
-     Estado inicial
-     del desvanecimiento.
+     Estado inicial para el fade.
   */
-
   transform:
     translateY(12px)
-    scale(.96);
-
+    scale(0.96);
 
   /*
-     Fade suave
+     Desvanecimiento suave.
   */
-
   transition:
     opacity 1.8s ease,
-    transform 1.8s ease;
+    transform 1.8s cubic-bezier(.22,.61,.36,1);
 }
 
 
@@ -324,12 +268,11 @@ body {
 ========================================================= */
 
 .side-photo img {
-
   display: block;
 
   width: 100%;
 
-  height: 66px;
+  height: 68px;
 
   object-fit: cover;
 
@@ -342,7 +285,6 @@ body {
 ========================================================= */
 
 .side-photo::before {
-
   content: "";
 
   position: absolute;
@@ -351,6 +293,7 @@ body {
   height: 9px;
 
   top: -5px;
+
   left: 50%;
 
   transform:
@@ -367,43 +310,40 @@ body {
     );
 
   box-shadow:
-    0 2px 4px rgba(0,0,0,.25);
+    0 2px 4px rgba(0, 0, 0, .25);
 
   z-index: 3;
 }
 
 
 /* =========================================================
-   ESTADO INICIAL DE CADA FOTO
+   POSICIÓN INICIAL DE LAS FOTOS
 ========================================================= */
 
 .photo-1 {
-
   transform:
     translateY(12px)
-    scale(.96)
+    scale(0.96)
     rotate(-5deg);
 }
 
 .photo-2 {
-
   transform:
     translateY(12px)
-    scale(.96)
+    scale(0.96)
     rotate(4deg);
 }
 
 .photo-3 {
-
   transform:
     translateY(12px)
-    scale(.96)
+    scale(0.96)
     rotate(-3deg);
 }
 
 
 /* =========================================================
-   APARICIÓN
+   DESVANECIMIENTO
 ========================================================= */
 
 /*
@@ -436,7 +376,7 @@ body {
     scale(1)
     rotate(4deg);
 
-  transition-delay: .8s;
+  transition-delay: 0.8s;
 }
 
 
@@ -458,33 +398,394 @@ body {
 
 
 /* =========================================================
-   BOTÓN DE MÚSICA
+   VERSIÓN MÓVIL
 ========================================================= */
 
-#music-btn {
+@media (max-width: 700px) {
 
-  position: fixed;
+  /*
+     ================================================
+     ÁRBOL
+     ================================================
+  */
 
-  right: 8px;
+  .tree-container {
 
-  bottom: 8px;
+    width: 92vw !important;
 
-  z-index: 100;
+    height: 62vw !important;
 
-  background:
-    rgba(255,255,255,.85);
+    max-width: 98vw;
 
-  border: none;
+    max-height: 80vw;
 
-  border-radius: 24px;
+    top: 48%;
 
-  padding:
-    7px
-    11px;
+    left: 50%;
 
-  font-size: .7rem;
+    transform:
+      translate(-50%, -50%);
+  }
 
-  cursor: pointer;
+
+  .tree-container svg.move-and-scale {
+
+    transform:
+      translateY(60px)
+      scale(1.18);
+  }
+
+
+  /*
+     ================================================
+     TEXTO ARRIBA DEL ÁRBOL
+     ================================================
+  */
+
+  .dedication-text {
+
+    /*
+       Ahora el texto queda arriba.
+    */
+    top: 3% !important;
+
+    left: 50% !important;
+
+    transform:
+      translateX(-50%) !important;
+
+    /*
+       Tamaño pequeño para que
+       no invada el árbol.
+    */
+    width: 82vw !important;
+
+    max-width: 88vw !important;
+
+    min-width: 0 !important;
+
+    font-size: 0.62rem !important;
+
+    line-height: 1.3 !important;
+
+    text-align: center !important;
+
+    color: #000000;
+
+    font-family:
+      'Courier New',
+      Courier,
+      monospace;
+
+    white-space: pre-line;
+
+    z-index: 15;
+
+    padding: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    opacity: 0;
+  }
+
+
+  /*
+     Animación original del texto.
+  */
+
+  .dedication-text.typing {
+
+    opacity: 1;
+
+    animation:
+      fadeInText 0.6s;
+  }
+
+
+  /*
+     ================================================
+     FIRMA
+     ================================================
+  */
+
+  .signature {
+
+    position: static;
+
+    display: block;
+
+    margin:
+      0.6em
+      auto
+      0
+      auto;
+
+    font-size: 0.80rem;
+
+    color: #e60026;
+
+    text-align: center;
+  }
+
+
+  /*
+     ================================================
+     CONTADOR
+     ================================================
+  */
+
+  .countdown {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 3%;
+
+    width: 72vw;
+
+    min-width: 0;
+
+    max-width: 88vw;
+
+    padding:
+      0.45em
+      0.7em;
+
+    font-size: 0.68rem;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+    border-radius: 1em;
+
+    z-index: 20;
+  }
+
+
+  /*
+     ================================================
+     FOTOS
+     ================================================
+  */
+
+  .side-photos {
+
+    position: fixed;
+
+    top: 50%;
+
+    right: 10px;
+
+    transform:
+      translateY(-50%);
+
+    width: 90px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 14px;
+
+    z-index: 12;
+
+    pointer-events: none;
+  }
+
+
+  /*
+     ================================================
+     MARCOS
+     ================================================
+  */
+
+  .side-photo {
+
+    position: relative;
+
+    width: 78px;
+
+    padding:
+      4px
+      4px
+      17px
+      4px;
+
+    background:
+      #fffdf9;
+
+    border-radius: 3px;
+
+    border:
+      1px solid
+      rgba(120,60,60,.10);
+
+    box-shadow:
+      0 3px 7px rgba(0,0,0,.12),
+      0 8px 16px rgba(0,0,0,.10);
+
+
+    /*
+       MUY IMPORTANTE:
+       empiezan invisibles.
+    */
+
+    opacity: 0;
+
+    transform:
+      translateY(12px)
+      scale(.96);
+
+    transition:
+      opacity 1.8s ease,
+      transform 1.8s
+      cubic-bezier(.22,.61,.36,1);
+  }
+
+
+  /*
+     ================================================
+     IMÁGENES
+     ================================================
+  */
+
+  .side-photo img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 68px;
+
+    object-fit: cover;
+
+    border-radius: 2px;
+  }
+
+
+  /*
+     ================================================
+     CHINCHETA
+     ================================================
+  */
+
+  .side-photo::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    top: -5px;
+    left: 50%;
+
+    transform:
+      translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+      radial-gradient(
+        circle at 35% 30%,
+        #ff9b9b,
+        #e60026 60%,
+        #9e001b
+      );
+
+    box-shadow:
+      0 2px 4px
+      rgba(0,0,0,.25);
+
+    z-index: 3;
+  }
+
+
+  /*
+     ================================================
+     POSICIONES INICIALES
+     ================================================
+  */
+
+  .photo-1 {
+
+    transform:
+      translateY(12px)
+      scale(.96)
+      rotate(-5deg);
+  }
+
+  .photo-2 {
+
+    transform:
+      translateY(12px)
+      scale(.96)
+      rotate(4deg);
+  }
+
+  .photo-3 {
+
+    transform:
+      translateY(12px)
+      scale(.96)
+      rotate(-3deg);
+  }
+
+
+  /*
+     ================================================
+     APARICIÓN DE LAS FOTOS
+     ================================================
+  */
+
+  .side-photos.photos-visible .photo-1 {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1)
+      rotate(-5deg);
+
+    transition-delay:
+      0s;
+  }
+
+
+  .side-photos.photos-visible .photo-2 {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1)
+      rotate(4deg);
+
+    transition-delay:
+      0.8s;
+  }
+
+
+  .side-photos.photos-visible .photo-3 {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1)
+      rotate(-3deg);
+
+    transition-delay:
+      1.6s;
+  }
+
 }
 
 
@@ -504,29 +805,39 @@ body {
   }
 
 
+  /*
+     Texto todavía un poco más pequeño.
+  */
+
   .dedication-text {
 
-    width: 88vw;
+    top: 2.5% !important;
 
-    bottom: 14%;
+    width: 84vw !important;
 
-    font-size: .70rem;
+    max-width: 88vw !important;
 
-    line-height: 1.35;
+    font-size: 0.57rem !important;
+
+    line-height: 1.28 !important;
   }
 
 
   .signature {
 
-    font-size: 1rem;
+    font-size: .72rem;
   }
 
+
+  /*
+     Fotos
+  */
 
   .side-photos {
 
     right: 4px;
 
-    width: 75px;
+    width: 74px;
 
     gap: 10px;
   }
@@ -559,6 +870,10 @@ body {
   }
 
 
+  /*
+     Contador
+  */
+
   .countdown {
 
     width: 80vw;
@@ -570,3 +885,19 @@ body {
 
 }
 
+
+/* =========================================================
+   ANIMACIÓN DE ENTRADA DEL TEXTO
+========================================================= */
+
+@keyframes fadeInText {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
