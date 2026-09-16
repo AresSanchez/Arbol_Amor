@@ -174,12 +174,12 @@ function actualizarBotonMusica(sonando) {
   if (sonando) {
 
     btn.textContent =
-      '🔊 Música';
+      '🔊';
 
   } else {
 
     btn.textContent =
-      '▶️ Música';
+      '▶️';
 
   }
 
