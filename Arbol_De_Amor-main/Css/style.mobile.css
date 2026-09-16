@@ -11,10 +11,15 @@ body {
   max-height: 80vw;
   min-width: 180px;
   min-height: 180px;
+
   position: absolute;
+
   top: 48%;
   left: 50%;
-  transform: translate(-50%, -50%);
+
+  transform:
+    translate(-50%, -50%);
+
   z-index: 2;
 }
 
@@ -25,75 +30,215 @@ body {
 }
 
 .tree-container svg.move-and-scale {
-  transition: transform 1.2s cubic-bezier(.77,0,.18,1);
+  transition:
+    transform 1.2s cubic-bezier(.77,0,.18,1);
 
-  /* Mueve hacia abajo en caso de los celulares */
-  transform: translateY(60px) scale(1.18);
+  /* Movimiento original del árbol */
+  transform:
+    translateY(60px)
+    scale(1.18);
 }
 
+
+/* =========================================================
+   DEDICATORIA
+========================================================= */
+
 .dedication-text {
+
   position: absolute;
+
   top: 7vw;
+
   left: 50%;
-  transform: translateX(-50%);
+
+  transform:
+    translateX(-50%);
+
   max-width: 92vw;
+
   font-size: 1.05rem;
+
   text-align: center;
+
   color: #000000;
-  font-family: 'Courier New', Courier, monospace;
+
+  font-family:
+    'Courier New',
+    Courier,
+    monospace;
+
   white-space: pre-line;
+
   z-index: 3;
+
   opacity: 0;
+
   pointer-events: none;
 }
 
+
+/* =========================================================
+   FIRMA
+========================================================= */
+
 .signature {
+
   position: static;
+
   display: block;
-  margin: 2.2em auto 0 auto;
+
+  margin:
+    2.2em
+    auto
+    0
+    auto;
+
   left: auto;
   bottom: auto;
   transform: none;
+
   font-size: 1.25rem;
+
   color: #e60026;
+
   opacity: 0;
+
   z-index: 5;
+
   white-space: pre;
+
   pointer-events: none;
-  transition: opacity 0.7s;
+
+  transition:
+    opacity 0.7s;
+
   text-align: center;
 }
 
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+.countdown {
+
+  position: fixed;
+
+  left: 50%;
+
+  bottom: 10vw;
+
+  transform:
+    translateX(-50%);
+
+  font-size: 0.98rem;
+
+  min-width: 60vw;
+
+  max-width: 92vw;
+
+  text-align: center;
+
+  padding:
+    0.5em
+    0.7em;
+
+  border-radius: 1em;
+
+  background: #fff8;
+
+  box-shadow:
+    0 2px 8px #e6002611;
+
+  z-index: 6;
+
+  pointer-events: none;
+
+  letter-spacing: 0.05em;
+
+  transition:
+    opacity 0.8s cubic-bezier(.77,0,.18,1),
+    transform 0.8s cubic-bezier(.77,0,.18,1);
+
+  opacity: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(30px);
+}
+
+.countdown.visible {
+
+  opacity: 1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* =========================================================
+   PÉTALOS
+========================================================= */
+
+.floating-petal {
+
+  width: 13px;
+
+  height: 18px;
+}
+
+
+/* =========================================================
+   VERSIÓN MÓVIL
+========================================================= */
+
 @media (max-width: 700px) {
 
-  /* ======================================================
+
+  /* =======================================================
      ÁRBOL
-  ====================================================== */
+  ======================================================= */
 
   .tree-container {
+
     width: 92vw !important;
+
     height: 62vw !important;
+
     max-width: 98vw;
+
     max-height: 80vw;
+
     min-width: 180px;
+
     min-height: 180px;
 
     position: absolute;
 
     top: 48%;
+
     left: 50%;
 
     transform:
       translate(-50%, -50%);
+
+    z-index: 2;
   }
 
+
   .tree-container svg {
+
     width: 100%;
     height: 100%;
+
     display: block;
   }
 
+
   .tree-container svg.move-and-scale {
+
     transition:
       transform 1.2s cubic-bezier(.77,0,.18,1);
 
@@ -103,12 +248,12 @@ body {
   }
 
 
-  /* ======================================================
-     TEXTO DE DEDICATORIA
-     PEQUEÑO Y ARRIBA DEL ÁRBOL
-  ====================================================== */
+  /* =======================================================
+     TEXTO ARRIBA DEL ÁRBOL
+  ======================================================= */
 
   .dedication-text {
+
     position: absolute;
 
     top: 3% !important;
@@ -124,9 +269,6 @@ body {
 
     min-width: 0 !important;
 
-    /*
-       Texto aumentado ligeramente.
-    */
     font-size: 0.75rem !important;
 
     line-height: 1.4 !important;
@@ -157,6 +299,7 @@ body {
 
 
   .dedication-text.typing {
+
     opacity: 1;
 
     animation:
@@ -164,11 +307,12 @@ body {
   }
 
 
-  /* ======================================================
+  /* =======================================================
      FIRMA
-  ====================================================== */
+  ======================================================= */
 
   .signature {
+
     position: static;
 
     display: block;
@@ -187,19 +331,17 @@ body {
   }
 
 
-  /* ======================================================
+  /* =======================================================
      CONTADOR
-  ====================================================== */
+  ======================================================= */
 
   .countdown {
+
     position: fixed;
 
     left: 50%;
 
     bottom: 3%;
-
-    transform:
-      translateX(-50%);
 
     width: 72vw;
 
@@ -241,7 +383,9 @@ body {
       translateY(30px);
   }
 
+
   .countdown.visible {
+
     opacity: 1;
 
     transform:
@@ -250,21 +394,24 @@ body {
   }
 
 
-  /* ======================================================
+  /* =======================================================
      PÉTALOS
-  ====================================================== */
+  ======================================================= */
 
   .floating-petal {
+
     width: 13px;
+
     height: 18px;
   }
 
 
-  /* ======================================================
-     FOTOS A LA DERECHA DEL ÁRBOL
-  ====================================================== */
+  /* =======================================================
+     FOTOS
+  ======================================================= */
 
   .side-photos {
+
     position: fixed;
 
     top: 50%;
@@ -290,11 +437,12 @@ body {
   }
 
 
-  /* ======================================================
-     MARCO DE LAS FOTOS
-  ====================================================== */
+  /* =======================================================
+     MARCO
+  ======================================================= */
 
   .side-photo {
+
     position: relative;
 
     width: 78px;
@@ -312,39 +460,56 @@ body {
 
     border:
       1px solid
-      rgba(120, 60, 60, 0.10);
+      rgba(120,60,60,0.10);
 
     box-shadow:
-      0 3px 7px rgba(0, 0, 0, 0.12),
-      0 8px 16px rgba(0, 0, 0, 0.10);
+      0 3px 7px
+      rgba(0,0,0,0.12),
+
+      0 8px 16px
+      rgba(0,0,0,0.10);
+
 
     /*
-       Las fotos empiezan totalmente invisibles.
+      COMIENZAN INVISIBLES
     */
+
     opacity: 0;
 
-    /*
-       Pequeño movimiento inicial.
-    */
-    transform:
-      translateY(12px)
-      scale(0.96);
 
     /*
-       Desvanecimiento suave.
+      Posición inicial
     */
-    transition:
-      opacity 1.8s ease,
-      transform 1.8s
-      cubic-bezier(.22,.61,.36,1);
+
+    transform:
+      translateY(10px)
+      scale(.96);
+
+
+    /*
+      Animación controlada directamente
+    */
+
+    animation:
+      photoFadeIn 1.8s ease forwards;
+
+
+    /*
+      IMPORTANTE:
+      Esperamos a que el árbol termine.
+    */
+
+    animation-delay:
+      5.5s;
   }
 
 
-  /* ======================================================
-     IMAGEN
-  ====================================================== */
+  /* =======================================================
+     FOTO
+  ======================================================= */
 
   .side-photo img {
+
     display: block;
 
     width: 100%;
@@ -357,16 +522,18 @@ body {
   }
 
 
-  /* ======================================================
+  /* =======================================================
      CHINCHETA
-  ====================================================== */
+  ======================================================= */
 
   .side-photo::before {
+
     content: "";
 
     position: absolute;
 
     width: 9px;
+
     height: 9px;
 
     top: -5px;
@@ -388,102 +555,114 @@ body {
 
     box-shadow:
       0 2px 4px
-      rgba(0, 0, 0, .25);
+      rgba(0,0,0,.25);
 
     z-index: 3;
   }
 
 
-  /* ======================================================
-     POSICIÓN INICIAL DE LAS FOTOS
-  ====================================================== */
+  /* =======================================================
+     ROTACIÓN
+  ======================================================= */
 
   .photo-1 {
+
     transform:
-      translateY(12px)
-      scale(0.96)
+      translateY(10px)
+      scale(.96)
       rotate(-5deg);
+
+    animation-delay:
+      5.5s;
   }
+
 
   .photo-2 {
+
     transform:
-      translateY(12px)
-      scale(0.96)
+      translateY(10px)
+      scale(.96)
       rotate(4deg);
+
+    animation-delay:
+      6.3s;
   }
+
 
   .photo-3 {
-    transform:
-      translateY(12px)
-      scale(0.96)
-      rotate(-3deg);
-  }
-
-
-  /* ======================================================
-     DESVANECIMIENTO DE LAS FOTOS
-  ====================================================== */
-
-  /*
-     TED Y TRACY
-  */
-
-  .side-photos.photos-visible .photo-1 {
-    opacity: 1;
 
     transform:
-      translateY(0)
-      scale(1)
-      rotate(-5deg);
-
-    transition-delay:
-      0s;
-  }
-
-
-  /*
-     FOTO 1 DE USTEDES
-  */
-
-  .side-photos.photos-visible .photo-2 {
-    opacity: 1;
-
-    transform:
-      translateY(0)
-      scale(1)
-      rotate(4deg);
-
-    transition-delay:
-      0.8s;
-  }
-
-
-  /*
-     FOTO 2 DE USTEDES
-  */
-
-  .side-photos.photos-visible .photo-3 {
-    opacity: 1;
-
-    transform:
-      translateY(0)
-      scale(1)
+      translateY(10px)
+      scale(.96)
       rotate(-3deg);
 
-    transition-delay:
-      1.6s;
+    animation-delay:
+      7.1s;
+  }
+
+
+  /* =======================================================
+     ANIMACIÓN FADE
+  ======================================================= */
+
+  @keyframes photoFadeIn {
+
+    from {
+
+      opacity: 0;
+
+    }
+
+    to {
+
+      opacity: 1;
+
+    }
+
+  }
+
+
+  /* =======================================================
+     ESTADOS FINALES
+  ======================================================= */
+
+  .photo-1,
+  .photo-2,
+  .photo-3 {
+
+    animation-name:
+      photoAppear;
+  }
+
+
+  @keyframes photoAppear {
+
+    from {
+
+      opacity: 0;
+
+    }
+
+    to {
+
+      opacity: 1;
+
+    }
+
   }
 
 }
 
 
-/* ==========================================================
+/* =========================================================
    TELÉFONOS MUY PEQUEÑOS
-========================================================== */
+========================================================= */
 
 @media (max-width: 380px) {
 
+
   .tree-container {
+
     width: 92vw !important;
 
     height: 62vw !important;
@@ -492,11 +671,12 @@ body {
   }
 
 
-  /* ======================================================
+  /* =======================================================
      TEXTO
-  ====================================================== */
+  ======================================================= */
 
   .dedication-text {
+
     top: 2.5% !important;
 
     left: 50% !important;
@@ -514,20 +694,22 @@ body {
   }
 
 
-  /* ======================================================
+  /* =======================================================
      FIRMA
-  ====================================================== */
+  ======================================================= */
 
   .signature {
+
     font-size: 0.78rem;
   }
 
 
-  /* ======================================================
+  /* =======================================================
      FOTOS
-  ====================================================== */
+  ======================================================= */
 
   .side-photos {
+
     right: 4px;
 
     width: 74px;
@@ -535,7 +717,9 @@ body {
     gap: 10px;
   }
 
+
   .side-photo {
+
     width: 63px;
 
     padding:
@@ -545,23 +729,50 @@ body {
       3px;
   }
 
+
   .side-photo img {
+
     height: 55px;
   }
 
+
   .side-photo::before {
+
     width: 8px;
+
     height: 8px;
 
     top: -4px;
   }
 
 
-  /* ======================================================
+  .photo-1 {
+
+    animation-delay:
+      5.5s;
+  }
+
+
+  .photo-2 {
+
+    animation-delay:
+      6.3s;
+  }
+
+
+  .photo-3 {
+
+    animation-delay:
+      7.1s;
+  }
+
+
+  /* =======================================================
      CONTADOR
-  ====================================================== */
+  ======================================================= */
 
   .countdown {
+
     width: 80vw;
 
     font-size: 0.52rem;
@@ -579,11 +790,15 @@ body {
 @keyframes fadeInText {
 
   from {
+
     opacity: 0;
+
   }
 
   to {
+
     opacity: 1;
+
   }
 
 }
