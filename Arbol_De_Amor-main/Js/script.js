@@ -387,7 +387,7 @@ function showDedicationText() {
 
 Por que cuando te miro a los ojos y me devuelves la mirada, el mundo entero se siente un poco anormal, porque me haces sentir más fuerte y más débil al mismo tiempo.
 
-Y por todo eso no quiero ser el pan integral de tu desayuno, ese que eliges solo porque es bueno para ti; quiero ser esa dona de chocolate que te tienta, la que te encanta y disfrutas sin pensar.\n\n
+Y por todo eso no quiero ser el pan integral de tu desayuno, ese que eliges solo porque es bueno para ti; quiero ser esa dona de chocolate que te tienta, la que te encanta y disfrutas sin pensar.\n
 
 Avy jorāelan mirre jēdari — te amo más de lo que las palabras alcanzan a decir.`;
 
