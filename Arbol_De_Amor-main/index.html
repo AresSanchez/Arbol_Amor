@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Árbol de Amor Animado</title>
+
+    <meta
+        name="author"
+        content="Zero"
+    >
+
+    <meta
+        name="copyright"
+        content="Zero - Código libre no comercial"
+    >
+
+    <meta
+        name="description"
+        content="Árbol de Amor Animado"
+    >
+
+    <!-- CSS PRINCIPAL -->
+    <link
+        rel="stylesheet"
+        href="Css/style.css"
+    >
+
+    <!-- CSS MÓVIL -->
+    <link
+        rel="stylesheet"
+        href="Css/style.mobile.css"
+        media="only screen and (max-width: 700px)"
+    >
+
+    <style>
+
+        .tree-container {
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            width: 400px;
+            height: 400px;
+
+            z-index: 2;
+        }
+
+        .animated-heart {
+
+            transform-origin: center;
+
+            animation:
+                beat 1s infinite;
+        }
+
+        @keyframes beat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            20% {
+                transform: scale(1.1);
+            }
+
+            40% {
+                transform: scale(.95);
+            }
+
+            60% {
+                transform: scale(1.08);
+            }
+
+            80% {
+                transform: scale(1);
+            }
+
+        }
+
+        /* =================================================
+           BOTÓN DE PRUEBA
+        ================================================= */
+
+        #test-mobile {
+
+            position: fixed;
+
+            top: 10px;
+            left: 10px;
+
+            z-index: 99999;
+
+            padding:
+                10px 14px;
+
+            background: #000;
+
+            color: #fff;
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- PÉTALOS -->
+
+    <div
+        id="floating-objects"
+    ></div>
+
+
+    <!-- TEXTO -->
+
+    <div
+        class="dedication-text"
+        id="dedication-text"
+    >
+
+        <div
+            class="signature"
+            id="signature"
+        ></div>
+
+    </div>
+
+
+    <!-- CONTADOR -->
+
+    <div
+        class="countdown"
+        id="countdown"
+    ></div>
+
+
+    <!-- ÁRBOL -->
+
+    <div
+        id="tree-container"
+        class="tree-container"
+    ></div>
+
+
+    <!-- =================================================
+         FOTOS A LA DERECHA
+    ================================================= -->
+
+    <div class="side-photos">
+
+        <div class="side-photo photo-1">
+
+            <img
+                src="Img/ted-tracy.png"
+                alt="Ted y Tracy"
+            >
+
+        </div>
+
+
+        <div class="side-photo photo-2">
+
+            <img
+                src="Img/nosotros-1.jpg"
+                alt="Nosotros"
+            >
+
+        </div>
+
+
+        <div class="side-photo photo-3">
+
+            <img
+                src="Img/nosotros-2.jpg"
+                alt="Nosotros"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BOTÓN DE PRUEBA
+    ================================================= -->
+
+    <button
+    onclick="document.body.style.background='red'"
+    style="
+        position:fixed;
+        top:10px;
+        left:10px;
+        z-index:99999;
+        padding:10px 15px;
+        background:#000;
+        color:#fff;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+    "
+>
+    PROBAR
+</button>
+
+
+    <!-- =================================================
+         MÚSICA
+    ================================================= -->
+
+    <audio
+        src="Music/Josean Log - Chachachá (Lyric Video).mp3"
+        id="bg-music"
+        preload="auto"
+    ></audio>
+
+
+    <!-- =================================================
+         SCRIPT DE PRUEBA
+    ================================================= -->
+
+    <script>
+
+        const testButton =
+            document.getElementById(
+                "test-mobile"
+            );
+
+        testButton.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "mobile-test"
+                );
+
+            }
+        );
+
+    </script>
+
+
+    <!-- SCRIPT PRINCIPAL -->
+
+    <script src="Js/script.js"></script>
+
+</body>
+
+</html>
+
