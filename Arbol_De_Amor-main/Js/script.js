@@ -198,9 +198,6 @@ function intentarReproducirMusica() {
   if (!audio) return;
 
 
-  // Si ya está reproduciéndose,
-  // no hacemos nada.
-
   if (
     musicaInicializada &&
     !audio.paused
@@ -223,19 +220,10 @@ function intentarReproducirMusica() {
       );
 
 
-      // El navegador permitió
-      // la reproducción.
-
       eliminarListenersMusica();
 
     })
     .catch(() => {
-
-      // Safari/iPhone puede bloquear
-      // el autoplay.
-
-      // Esperamos cualquier interacción
-      // fuera del botón.
 
       registrarListenersMusica();
 
@@ -289,16 +277,6 @@ function registrarListenersMusica() {
 
 function activarMusicaPorInteraccion(event) {
 
-  // =======================================================
-  // IMPORTANTE
-  //
-  // Si la interacción ocurrió sobre el botón,
-  // NO hacemos autoplay.
-  //
-  // Esto evita que al pulsar "Música"
-  // la canción se vuelva a activar inmediatamente.
-  // =======================================================
-
   if (
     event &&
     event.target &&
@@ -316,9 +294,6 @@ function activarMusicaPorInteraccion(event) {
 
   if (!audio) return;
 
-
-  // Si ya está sonando,
-  // no hacemos nada.
 
   if (!audio.paused) {
 
@@ -338,10 +313,6 @@ function activarMusicaPorInteraccion(event) {
   }
 
 
-  // Intentamos reproducir
-  // aprovechando la interacción
-  // real del usuario.
-
   audio.play()
     .then(() => {
 
@@ -358,9 +329,6 @@ function activarMusicaPorInteraccion(event) {
 
     })
     .catch(() => {
-
-      // Si todavía fue bloqueado,
-      // dejamos los listeners activos.
 
     });
 
@@ -419,7 +387,7 @@ function showDedicationText() {
 
 Por que cuando te miro a los ojos y me devuelves la mirada, el mundo entero se siente un poco anormal, porque me haces sentir más fuerte y más débil al mismo tiempo.
 
-Y por todo eso no quiero ser el pan integral de tu desayuno, ese que eliges solo porque es bueno para ti; quiero ser esa dona de chocolate que te tienta, la que te encanta y disfrutas sin pensar.\n
+Y por todo eso no quiero ser el pan integral de tu desayuno, ese que eliges solo porque es bueno para ti; quiero ser esa dona de chocolate que te tienta, la que te encanta y disfrutas sin pensar.\n\n
 
 Avy jorāelan mirre jēdari — te amo más de lo que las palabras alcanzan a decir.`;
 
@@ -915,7 +883,7 @@ function playBackgroundMusic() {
 
 
   // =======================================================
-  // CREAR BOTÓN
+  // CREAR BOTÓN DE MÚSICA
   // =======================================================
 
   let btn =
@@ -937,47 +905,85 @@ function playBackgroundMusic() {
 
 
     btn.textContent =
-      '🔊 Música';
+      '🔊';
 
+
+    // -----------------------------------------------------
+    // POSICIÓN
+    // -----------------------------------------------------
 
     btn.style.position =
       'fixed';
 
-
     btn.style.bottom =
-      '18px';
-
+      '8px';
 
     btn.style.right =
-      '18px';
-
+      '8px';
 
     btn.style.zIndex =
-      99;
+      '99';
 
+
+    // -----------------------------------------------------
+    // APARIENCIA
+    // -----------------------------------------------------
 
     btn.style.background =
-      'rgba(255,255,255,0.85)';
-
+      'rgba(255,255,255,0.75)';
 
     btn.style.border =
       'none';
 
-
     btn.style.borderRadius =
-      '24px';
+      '50%';
 
+
+    // -----------------------------------------------------
+    // TAMAÑO
+    // -----------------------------------------------------
+
+    btn.style.width =
+      '38px';
+
+    btn.style.height =
+      '38px';
 
     btn.style.padding =
-      '10px 18px';
+      '0';
 
+
+    // -----------------------------------------------------
+    // ICONO CENTRADO
+    // -----------------------------------------------------
+
+    btn.style.display =
+      'flex';
+
+    btn.style.alignItems =
+      'center';
+
+    btn.style.justifyContent =
+      'center';
 
     btn.style.fontSize =
-      '1.1em';
+      '0.9rem';
 
+
+    // -----------------------------------------------------
+    // INTERACCIÓN
+    // -----------------------------------------------------
 
     btn.style.cursor =
       'pointer';
+
+
+    // -----------------------------------------------------
+    // SOMBRA
+    // -----------------------------------------------------
+
+    btn.style.boxShadow =
+      '0 2px 6px rgba(0,0,0,0.15)';
 
 
     document.body.appendChild(
@@ -994,36 +1000,27 @@ function playBackgroundMusic() {
   audio.volume =
     0.7;
 
-
   audio.loop =
     true;
 
 
   // =======================================================
-  // INTENTAR AUTOPLAY
+  // INTENTAR REPRODUCIR
   // =======================================================
 
   intentarReproducirMusica();
 
 
   // =======================================================
-  // BOTÓN DE MÚSICA
+  // BOTÓN PLAY / PAUSA
   // =======================================================
 
   btn.onclick = (event) => {
-
-    // Evita que el clic del botón
-    // sea tratado como interacción
-    // para autoplay.
 
     event.stopPropagation();
 
 
     if (audio.paused) {
-
-      // ===============================================
-      // REPRODUCIR
-      // ===============================================
 
       audio.play()
         .then(() => {
@@ -1033,7 +1030,7 @@ function playBackgroundMusic() {
 
 
           btn.textContent =
-            '🔊 Música';
+            '🔊';
 
 
           eliminarListenersMusica();
@@ -1042,16 +1039,12 @@ function playBackgroundMusic() {
         .catch(() => {
 
           btn.textContent =
-            '▶️ Música';
+            '▶️';
 
         });
 
 
     } else {
-
-      // ===============================================
-      // PAUSAR
-      // ===============================================
 
       audio.pause();
 
@@ -1061,12 +1054,8 @@ function playBackgroundMusic() {
 
 
       btn.textContent =
-        '🔈 Música';
+        '🔈';
 
-
-      // Después de pausar,
-      // una interacción FUERA del botón
-      // podrá volver a activar la música.
 
       registrarListenersMusica();
 
