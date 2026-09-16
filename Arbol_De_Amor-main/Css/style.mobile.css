@@ -80,16 +80,24 @@ body {
   z-index: 6;
   pointer-events: none;
   letter-spacing: 0.05em;
+
   transition:
     opacity 0.8s cubic-bezier(.77,0,.18,1),
     transform 0.8s cubic-bezier(.77,0,.18,1);
+
   opacity: 0;
-  transform: translateX(-50%) translateY(30px);
+
+  transform:
+    translateX(-50%)
+    translateY(30px);
 }
 
 .countdown.visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+
+  transform:
+    translateX(-50%)
+    translateY(0);
 }
 
 
@@ -126,7 +134,8 @@ body {
     top: 48%;
     left: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+      translate(-50%, -50%);
 
     z-index: 2;
   }
@@ -228,17 +237,16 @@ body {
 
 
   /* =======================================================
-     FOTOS DEBAJO DEL ÁRBOL
+     FOTOS HORIZONTALES DEBAJO DEL ÁRBOL
   ======================================================= */
 
   .side-photos {
-
     position: fixed;
 
     /*
-       Fila horizontal debajo del árbol.
+       Subimos los marcos.
     */
-    top: 78%;
+    top: 74%;
 
     left: 50%;
 
@@ -264,11 +272,10 @@ body {
 
 
   /* =======================================================
-     MARCOS
+     MARCOS DE LAS FOTOS
   ======================================================= */
 
   .side-photo {
-
     position: relative;
 
     width: 82px;
@@ -295,22 +302,20 @@ body {
       0 8px 16px
       rgba(0, 0, 0, 0.10);
 
-
     /*
-       Comienzan invisibles.
+       Las fotos comienzan invisibles.
     */
     opacity: 0;
 
     /*
-       Comienzan ligeramente abajo
-       y más pequeñas.
+       Posición inicial del fade.
     */
     transform:
       translateY(12px)
       scale(0.96);
 
     /*
-       Fade.
+       Desvanecimiento.
     */
     animation:
       photoAppear 1.8s ease forwards;
@@ -322,7 +327,6 @@ body {
   ======================================================= */
 
   .side-photo img {
-
     display: block;
 
     width: 100%;
@@ -340,7 +344,6 @@ body {
   ======================================================= */
 
   .side-photo::before {
-
     content: "";
 
     position: absolute;
@@ -368,14 +371,14 @@ body {
 
     box-shadow:
       0 2px 4px
-      rgba(0, 0, 0, .25);
+      rgba(0, 0, 0, 0.25);
 
     z-index: 3;
   }
 
 
   /* =======================================================
-     INCLINACIÓN DE LAS FOTOS
+     INCLINACIÓN DE CADA FOTO
   ======================================================= */
 
   .photo-1 {
@@ -389,7 +392,6 @@ body {
       5.5s;
   }
 
-
   .photo-2 {
 
     transform:
@@ -400,7 +402,6 @@ body {
     animation-delay:
       6.3s;
   }
-
 
   .photo-3 {
 
@@ -421,15 +422,11 @@ body {
   @keyframes photoAppear {
 
     from {
-
       opacity: 0;
-
     }
 
     to {
-
       opacity: 1;
-
     }
 
   }
@@ -454,10 +451,10 @@ body {
     max-width: 88vw;
 
     padding:
-      .45em
-      .7em;
+      0.45em
+      0.7em;
 
-    font-size: .68rem;
+    font-size: 0.68rem;
 
     line-height: 1.5;
 
@@ -472,6 +469,8 @@ body {
       #e6002611;
 
     z-index: 20;
+
+    pointer-events: none;
   }
 
 }
@@ -488,7 +487,6 @@ body {
   ======================================================= */
 
   .tree-container {
-
     width: 92vw !important;
 
     height: 62vw !important;
@@ -536,7 +534,7 @@ body {
 
   .side-photos {
 
-    top: 78%;
+    top: 74%;
 
     left: 50%;
 
@@ -577,10 +575,6 @@ body {
   }
 
 
-  /* =======================================================
-     RETRASOS DEL FADE
-  ======================================================= */
-
   .photo-1 {
 
     animation-delay:
@@ -608,7 +602,7 @@ body {
 
     width: 80vw;
 
-    font-size: .52rem;
+    font-size: 0.52rem;
 
     bottom: 3%;
   }
@@ -623,15 +617,11 @@ body {
 @keyframes fadeInText {
 
   from {
-
     opacity: 0;
-
   }
 
   to {
-
     opacity: 1;
-
   }
 
 }
