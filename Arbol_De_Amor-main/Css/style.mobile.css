@@ -11,15 +11,10 @@ body {
   max-height: 80vw;
   min-width: 180px;
   min-height: 180px;
-
   position: absolute;
-
   top: 48%;
   left: 50%;
-
-  transform:
-    translate(-50%, -50%);
-
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
@@ -30,151 +25,71 @@ body {
 }
 
 .tree-container svg.move-and-scale {
-  transition:
-    transform 1.2s cubic-bezier(.77,0,.18,1);
+  transition: transform 1.2s cubic-bezier(.77,0,.18,1);
 
-  /* Movimiento original del árbol */
-  transform:
-    translateY(60px)
-    scale(1.18);
+  /* Mueve hacia abajo en caso de los celulares */
+  transform: translateY(60px) scale(1.18);
 }
 
-
-/* =========================================================
-   DEDICATORIA
-========================================================= */
-
 .dedication-text {
-
   position: absolute;
-
   top: 7vw;
-
   left: 50%;
-
-  transform:
-    translateX(-50%);
-
+  transform: translateX(-50%);
   max-width: 92vw;
-
   font-size: 1.05rem;
-
   text-align: center;
-
   color: #000000;
-
-  font-family:
-    'Courier New',
-    Courier,
-    monospace;
-
+  font-family: 'Courier New', Courier, monospace;
   white-space: pre-line;
-
   z-index: 3;
-
   opacity: 0;
-
   pointer-events: none;
 }
 
-
-/* =========================================================
-   FIRMA
-========================================================= */
-
 .signature {
-
   position: static;
-
   display: block;
-
-  margin:
-    2.2em
-    auto
-    0
-    auto;
-
+  margin: 2.2em auto 0 auto;
   left: auto;
   bottom: auto;
   transform: none;
-
   font-size: 1.25rem;
-
   color: #e60026;
-
   opacity: 0;
-
   z-index: 5;
-
   white-space: pre;
-
   pointer-events: none;
-
-  transition:
-    opacity 0.7s;
-
+  transition: opacity 0.7s;
   text-align: center;
 }
 
-
-/* =========================================================
-   CONTADOR
-========================================================= */
-
 .countdown {
-
   position: fixed;
-
   left: 50%;
-
   bottom: 10vw;
-
-  transform:
-    translateX(-50%);
-
+  transform: translateX(-50%);
   font-size: 0.98rem;
-
   min-width: 60vw;
-
   max-width: 92vw;
-
   text-align: center;
-
-  padding:
-    0.5em
-    0.7em;
-
+  padding: 0.5em 0.7em;
   border-radius: 1em;
-
   background: #fff8;
-
-  box-shadow:
-    0 2px 8px #e6002611;
-
+  box-shadow: 0 2px 8px #e6002611;
   z-index: 6;
-
   pointer-events: none;
-
   letter-spacing: 0.05em;
-
   transition:
     opacity 0.8s cubic-bezier(.77,0,.18,1),
     transform 0.8s cubic-bezier(.77,0,.18,1);
-
   opacity: 0;
-
-  transform:
-    translateX(-50%)
-    translateY(30px);
+  transform: translateX(-50%) translateY(30px);
 }
 
 .countdown.visible {
-
   opacity: 1;
-
-  transform:
-    translateX(-50%)
-    translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 
@@ -183,9 +98,7 @@ body {
 ========================================================= */
 
 .floating-petal {
-
   width: 13px;
-
   height: 18px;
 }
 
@@ -196,49 +109,35 @@ body {
 
 @media (max-width: 700px) {
 
-
   /* =======================================================
      ÁRBOL
   ======================================================= */
 
   .tree-container {
-
     width: 92vw !important;
-
     height: 62vw !important;
-
     max-width: 98vw;
-
     max-height: 80vw;
-
     min-width: 180px;
-
     min-height: 180px;
 
     position: absolute;
 
     top: 48%;
-
     left: 50%;
 
-    transform:
-      translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
     z-index: 2;
   }
 
-
   .tree-container svg {
-
     width: 100%;
     height: 100%;
-
     display: block;
   }
 
-
   .tree-container svg.move-and-scale {
-
     transition:
       transform 1.2s cubic-bezier(.77,0,.18,1);
 
@@ -253,7 +152,6 @@ body {
   ======================================================= */
 
   .dedication-text {
-
     position: absolute;
 
     top: 3% !important;
@@ -299,7 +197,6 @@ body {
 
 
   .dedication-text.typing {
-
     opacity: 1;
 
     animation:
@@ -312,7 +209,6 @@ body {
   ======================================================= */
 
   .signature {
-
     position: static;
 
     display: block;
@@ -332,104 +228,34 @@ body {
 
 
   /* =======================================================
-     CONTADOR
-  ======================================================= */
-
-  .countdown {
-
-    position: fixed;
-
-    left: 50%;
-
-    bottom: 3%;
-
-    width: 72vw;
-
-    min-width: 0;
-
-    max-width: 88vw;
-
-    font-size: 0.68rem;
-
-    line-height: 1.5;
-
-    text-align: center;
-
-    padding:
-      0.45em
-      0.7em;
-
-    border-radius: 1em;
-
-    background: #fff8;
-
-    box-shadow:
-      0 2px 8px #e6002611;
-
-    z-index: 20;
-
-    pointer-events: none;
-
-    letter-spacing: 0.03em;
-
-    transition:
-      opacity 0.8s cubic-bezier(.77,0,.18,1),
-      transform 0.8s cubic-bezier(.77,0,.18,1);
-
-    opacity: 0;
-
-    transform:
-      translateX(-50%)
-      translateY(30px);
-  }
-
-
-  .countdown.visible {
-
-    opacity: 1;
-
-    transform:
-      translateX(-50%)
-      translateY(0);
-  }
-
-
-  /* =======================================================
-     PÉTALOS
-  ======================================================= */
-
-  .floating-petal {
-
-    width: 13px;
-
-    height: 18px;
-  }
-
-
-  /* =======================================================
-     FOTOS
+     FOTOS DEBAJO DEL ÁRBOL
   ======================================================= */
 
   .side-photos {
 
     position: fixed;
 
-    top: 50%;
+    /*
+       Fila horizontal debajo del árbol.
+    */
+    top: 78%;
 
-    right: 10px;
+    left: 50%;
 
     transform:
-      translateY(-50%);
+      translateX(-50%);
 
-    width: 90px;
+    width: 92vw;
 
     display: flex;
 
-    flex-direction: column;
+    flex-direction: row;
 
     align-items: center;
 
-    gap: 14px;
+    justify-content: center;
+
+    gap: 10px;
 
     z-index: 12;
 
@@ -438,14 +264,14 @@ body {
 
 
   /* =======================================================
-     MARCO
+     MARCOS
   ======================================================= */
 
   .side-photo {
 
     position: relative;
 
-    width: 78px;
+    width: 82px;
 
     padding:
       4px
@@ -460,52 +286,39 @@ body {
 
     border:
       1px solid
-      rgba(120,60,60,0.10);
+      rgba(120, 60, 60, 0.10);
 
     box-shadow:
       0 3px 7px
-      rgba(0,0,0,0.12),
+      rgba(0, 0, 0, 0.12),
 
       0 8px 16px
-      rgba(0,0,0,0.10);
+      rgba(0, 0, 0, 0.10);
 
 
     /*
-      COMIENZAN INVISIBLES
+       Comienzan invisibles.
     */
-
     opacity: 0;
 
-
     /*
-      Posición inicial
+       Comienzan ligeramente abajo
+       y más pequeñas.
     */
-
     transform:
-      translateY(10px)
-      scale(.96);
-
+      translateY(12px)
+      scale(0.96);
 
     /*
-      Animación controlada directamente
+       Fade.
     */
-
     animation:
-      photoFadeIn 1.8s ease forwards;
-
-
-    /*
-      IMPORTANTE:
-      Esperamos a que el árbol termine.
-    */
-
-    animation-delay:
-      5.5s;
+      photoAppear 1.8s ease forwards;
   }
 
 
   /* =======================================================
-     FOTO
+     IMÁGENES
   ======================================================= */
 
   .side-photo img {
@@ -514,7 +327,7 @@ body {
 
     width: 100%;
 
-    height: 68px;
+    height: 72px;
 
     object-fit: cover;
 
@@ -555,20 +368,20 @@ body {
 
     box-shadow:
       0 2px 4px
-      rgba(0,0,0,.25);
+      rgba(0, 0, 0, .25);
 
     z-index: 3;
   }
 
 
   /* =======================================================
-     ROTACIÓN
+     INCLINACIÓN DE LAS FOTOS
   ======================================================= */
 
   .photo-1 {
 
     transform:
-      translateY(10px)
+      translateY(12px)
       scale(.96)
       rotate(-5deg);
 
@@ -580,9 +393,9 @@ body {
   .photo-2 {
 
     transform:
-      translateY(10px)
+      translateY(12px)
       scale(.96)
-      rotate(4deg);
+      rotate(3deg);
 
     animation-delay:
       6.3s;
@@ -592,7 +405,7 @@ body {
   .photo-3 {
 
     transform:
-      translateY(10px)
+      translateY(12px)
       scale(.96)
       rotate(-3deg);
 
@@ -602,38 +415,8 @@ body {
 
 
   /* =======================================================
-     ANIMACIÓN FADE
+     ANIMACIÓN DE DESVANECIMIENTO
   ======================================================= */
-
-  @keyframes photoFadeIn {
-
-    from {
-
-      opacity: 0;
-
-    }
-
-    to {
-
-      opacity: 1;
-
-    }
-
-  }
-
-
-  /* =======================================================
-     ESTADOS FINALES
-  ======================================================= */
-
-  .photo-1,
-  .photo-2,
-  .photo-3 {
-
-    animation-name:
-      photoAppear;
-  }
-
 
   @keyframes photoAppear {
 
@@ -651,6 +434,46 @@ body {
 
   }
 
+
+  /* =======================================================
+     CONTADOR
+  ======================================================= */
+
+  .countdown {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 3%;
+
+    width: 72vw;
+
+    min-width: 0;
+
+    max-width: 88vw;
+
+    padding:
+      .45em
+      .7em;
+
+    font-size: .68rem;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+    border-radius: 1em;
+
+    background: #fff8;
+
+    box-shadow:
+      0 2px 8px
+      #e6002611;
+
+    z-index: 20;
+  }
+
 }
 
 
@@ -660,6 +483,9 @@ body {
 
 @media (max-width: 380px) {
 
+  /* =======================================================
+     ÁRBOL
+  ======================================================= */
 
   .tree-container {
 
@@ -710,17 +536,22 @@ body {
 
   .side-photos {
 
-    right: 4px;
+    top: 78%;
 
-    width: 74px;
+    left: 50%;
 
-    gap: 10px;
+    width: 94vw;
+
+    gap: 6px;
+
+    transform:
+      translateX(-50%);
   }
 
 
   .side-photo {
 
-    width: 63px;
+    width: 68px;
 
     padding:
       3px
@@ -732,7 +563,7 @@ body {
 
   .side-photo img {
 
-    height: 55px;
+    height: 58px;
   }
 
 
@@ -746,19 +577,21 @@ body {
   }
 
 
+  /* =======================================================
+     RETRASOS DEL FADE
+  ======================================================= */
+
   .photo-1 {
 
     animation-delay:
       5.5s;
   }
 
-
   .photo-2 {
 
     animation-delay:
       6.3s;
   }
-
 
   .photo-3 {
 
@@ -775,7 +608,7 @@ body {
 
     width: 80vw;
 
-    font-size: 0.52rem;
+    font-size: .52rem;
 
     bottom: 3%;
   }
