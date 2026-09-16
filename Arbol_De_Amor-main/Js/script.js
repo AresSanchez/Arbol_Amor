@@ -65,7 +65,6 @@ fetch('Img/treelove.svg')
           `stroke-dashoffset 1.2s cubic-bezier(.77,0,.18,1) ${i * 0.08}s, ` +
           `fill-opacity 0.5s ${0.9 + i * 0.08}s`;
 
-
         path.style.strokeDashoffset =
           0;
 
@@ -239,7 +238,9 @@ function intentarReproducirMusica() {
 function registrarListenersMusica() {
 
   if (listenerMusicaRegistrado) {
+
     return;
+
   }
 
 
@@ -342,7 +343,9 @@ function activarMusicaPorInteraccion(event) {
 function eliminarListenersMusica() {
 
   if (!listenerMusicaRegistrado) {
+
     return;
+
   }
 
 
@@ -541,9 +544,10 @@ function startFloatingObjects() {
       `${100 + Math.random() * 10}%`;
 
 
+    // PÉTALOS MÁS VISIBLES
     el.style.opacity =
-      0.7 +
-      Math.random() * 0.3;
+      0.9 +
+      Math.random() * 0.1;
 
 
     container.appendChild(
@@ -572,8 +576,10 @@ function startFloatingObjects() {
         `rotate(${Math.random() * 360}deg)`;
 
 
+      // ANTES: 0.2
+      // AHORA: MÁS VISIBLES
       el.style.opacity =
-        0.2;
+        0.65;
 
     }, 30);
 
@@ -915,11 +921,14 @@ function playBackgroundMusic() {
     btn.style.position =
       'fixed';
 
+
     btn.style.bottom =
       '8px';
 
+
     btn.style.right =
       '8px';
+
 
     btn.style.zIndex =
       '99';
@@ -932,8 +941,10 @@ function playBackgroundMusic() {
     btn.style.background =
       'rgba(255,255,255,0.75)';
 
+
     btn.style.border =
       'none';
+
 
     btn.style.borderRadius =
       '50%';
@@ -946,8 +957,10 @@ function playBackgroundMusic() {
     btn.style.width =
       '38px';
 
+
     btn.style.height =
       '38px';
+
 
     btn.style.padding =
       '0';
@@ -960,11 +973,14 @@ function playBackgroundMusic() {
     btn.style.display =
       'flex';
 
+
     btn.style.alignItems =
       'center';
 
+
     btn.style.justifyContent =
       'center';
+
 
     btn.style.fontSize =
       '0.9rem';
@@ -999,6 +1015,7 @@ function playBackgroundMusic() {
 
   audio.volume =
     0.7;
+
 
   audio.loop =
     true;
@@ -1042,7 +1059,6 @@ function playBackgroundMusic() {
             '▶️';
 
         });
-
 
     } else {
 
