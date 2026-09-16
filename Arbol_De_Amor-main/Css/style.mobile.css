@@ -26,8 +26,6 @@ body {
 
 .tree-container svg.move-and-scale {
   transition: transform 1.2s cubic-bezier(.77,0,.18,1);
-
-  /* Mueve hacia abajo en caso de los celulares */
   transform: translateY(60px) scale(1.18);
 }
 
@@ -100,14 +98,20 @@ body {
     translateY(0);
 }
 
-
 /* =========================================================
    PÉTALOS
 ========================================================= */
 
 .floating-petal {
-  width: 13px;
-  height: 18px;
+  width: 18px;
+  height: 25px;
+  opacity: 0.95;
+
+  filter:
+    drop-shadow(
+      0 2px 3px
+      rgba(255, 80, 120, 0.35)
+    );
 }
 
 
@@ -116,10 +120,6 @@ body {
 ========================================================= */
 
 @media (max-width: 700px) {
-
-  /* =======================================================
-     ÁRBOL
-  ======================================================= */
 
   .tree-container {
     width: 92vw !important;
@@ -204,7 +204,6 @@ body {
     pointer-events: none;
   }
 
-
   .dedication-text.typing {
     opacity: 1;
 
@@ -243,9 +242,6 @@ body {
   .side-photos {
     position: fixed;
 
-    /*
-       Subimos los marcos.
-    */
     top: 74%;
 
     left: 50%;
@@ -302,21 +298,12 @@ body {
       0 8px 16px
       rgba(0, 0, 0, 0.10);
 
-    /*
-       Las fotos comienzan invisibles.
-    */
     opacity: 0;
 
-    /*
-       Posición inicial del fade.
-    */
     transform:
       translateY(12px)
       scale(0.96);
 
-    /*
-       Desvanecimiento.
-    */
     animation:
       photoAppear 1.8s ease forwards;
   }
@@ -428,7 +415,6 @@ body {
     to {
       opacity: 1;
     }
-
   }
 
 
@@ -437,7 +423,6 @@ body {
   ======================================================= */
 
   .countdown {
-
     position: fixed;
 
     left: 50%;
@@ -472,7 +457,6 @@ body {
 
     pointer-events: none;
   }
-
 }
 
 
@@ -481,10 +465,6 @@ body {
 ========================================================= */
 
 @media (max-width: 380px) {
-
-  /* =======================================================
-     ÁRBOL
-  ======================================================= */
 
   .tree-container {
     width: 92vw !important;
@@ -546,7 +526,6 @@ body {
       translateX(-50%);
   }
 
-
   .side-photo {
 
     width: 68px;
@@ -558,12 +537,10 @@ body {
       3px;
   }
 
-
   .side-photo img {
 
     height: 58px;
   }
-
 
   .side-photo::before {
 
@@ -573,7 +550,6 @@ body {
 
     top: -4px;
   }
-
 
   .photo-1 {
 
@@ -606,7 +582,6 @@ body {
 
     bottom: 3%;
   }
-
 }
 
 
@@ -623,5 +598,4 @@ body {
   to {
     opacity: 1;
   }
-
 }
